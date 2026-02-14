@@ -16,6 +16,7 @@ build/
 
 # ML artifacts
 ml/model.pkl
+ml/scaler.pkl
 
 # DuckDB warehouse (built at runtime)
 data/warehouse.duckdb
@@ -25,6 +26,7 @@ data/warehouse.duckdb.wal
 dbt_project/target/
 dbt_project/logs/
 dbt_project/dbt_packages/
+dbt_project/.user.yml
 
 # Node / React
 frontend/node_modules/
@@ -34,9 +36,10 @@ frontend/.env.local
 # Docker
 .docker/
 
-# IDE
+# IDE / Claude
 .vscode/
 .idea/
+.claude/
 *.swp
 *.swo
 .DS_Store
