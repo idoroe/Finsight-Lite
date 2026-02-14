@@ -1,0 +1,47 @@
+# Personal instructions (do not push)
+PERSONAL_INSTRUCTIONS.TXT
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ML artifacts
+ml/model.pkl
+
+# DuckDB warehouse (built at runtime)
+data/warehouse.duckdb
+data/warehouse.duckdb.wal
+
+# dbt
+dbt_project/target/
+dbt_project/logs/
+dbt_project/dbt_packages/
+
+# Node / React
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+
+# Docker
+.docker/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Env / secrets
+.env
+*.pem
+*.key
