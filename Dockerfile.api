@@ -1,0 +1,35 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+# Install system deps
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential git && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install Python deps
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy project files
+COPY ml/ ml/
+COPY api/ api/
+COPY dbt_project/ dbt_project/
+COPY data/raw/ data/raw/
+COPY scripts/ scripts/
+COPY tests/ tests/
+
+# Create data directory
+RUN mkdir -p data
+
+# Environment variables for paths inside container
+ENV DUCKDB_PATH=/app/data/warehouse.duckdb
+ENV CSV_PATH=/app/data/raw/transactions.csv
+
+# Startup script: build pipeline if warehouse doesn't exist, then serve API
+COPY scripts/docker_entrypoint.sh /app/scripts/docker_entrypoint.sh
+RUN chmod +x /app/scripts/docker_entrypoint.sh
+
+EXPOSE 8000
+
+CMD ["/app/scripts/docker_entrypoint.sh"]
