@@ -17,8 +17,7 @@ models:
         description: "Transaction channel"
         tests:
           - accepted_values:
-              arguments:
-                values: ["online", "POS", "ATM"]
+              values: ["online", "POS", "ATM"]
       - name: customer_id
         tests:
           - not_null
