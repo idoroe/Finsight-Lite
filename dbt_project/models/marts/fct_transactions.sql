@@ -1,0 +1,21 @@
+select
+    transaction_id,
+    customer_id,
+    merchant_id,
+    amount,
+    transaction_timestamp,
+    currency,
+    channel,
+    city,
+    is_international,
+    hour,
+    day_of_week,
+    is_weekend,
+    amount_zscore,
+    time_since_last_txn,
+    is_new_merchant,
+    txn_count_last_hour,
+    customer_avg_amount,
+    customer_std_amount,
+    merchant_avg_amount
+from {{ ref('int_transactions_enriched') }}

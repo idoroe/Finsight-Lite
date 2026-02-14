@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: fct_transactions
+    description: "Fact table with enriched transaction features"
+    columns:
+      - name: transaction_id
+        tests:
+          - unique
+          - not_null
+      - name: amount
+        tests:
+          - not_null
+
+  - name: dim_customer
+    description: "Customer dimension with spending stats"
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+
+  - name: dim_merchant
+    description: "Merchant dimension with category and stats"
+    columns:
+      - name: merchant_id
+        tests:
+          - not_null
+
+  - name: dim_time
+    description: "Time dimension derived from transactions"
+    columns:
+      - name: date_key
+        tests:
+          - unique
+          - not_null

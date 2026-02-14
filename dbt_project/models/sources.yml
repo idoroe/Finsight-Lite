@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Raw CSV transaction data"
+    meta:
+      external_location: "read_csv_auto('{{ env_var('CSV_PATH', '../data/raw/transactions.csv') }}')"
+    tables:
+      - name: transactions
+        description: "Raw banking transactions"
+        meta:
+          external_location: "read_csv_auto('{{ env_var('CSV_PATH', '../data/raw/transactions.csv') }}')"

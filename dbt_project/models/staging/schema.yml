@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: stg_transactions
+    description: "Staged transaction data with proper types"
+    columns:
+      - name: transaction_id
+        description: "Unique transaction identifier"
+        tests:
+          - unique
+          - not_null
+      - name: amount
+        description: "Transaction amount"
+        tests:
+          - not_null
+      - name: channel
+        description: "Transaction channel"
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["online", "POS", "ATM"]
+      - name: customer_id
+        tests:
+          - not_null
+      - name: merchant_id
+        tests:
+          - not_null
