@@ -2,7 +2,7 @@ services:
   - type: web
     name: finsight-lite
     runtime: python
-    buildCommand: pip install -r render-requirements.txt
+    buildCommand: pip install --prefer-binary -r render-requirements.txt
     startCommand: python -m ml.run_pipeline && uvicorn api.main:app --host 0.0.0.0 --port $PORT
     disk:
       name: finsight-data
