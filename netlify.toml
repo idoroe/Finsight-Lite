@@ -1,0 +1,13 @@
+[build]
+  command   = "cd frontend && npm ci && npm run build"
+  publish   = "frontend/dist"
+
+[build.environment]
+  # Set VITE_API_URL in the Netlify dashboard after Render deploys:
+  # e.g. https://finsight-lite.onrender.com
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
